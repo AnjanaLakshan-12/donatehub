@@ -1,7 +1,7 @@
 package org.example.donatehub.service;
 
 import jakarta.transaction.Transactional;
-import org.example.donatehub.DTO.userDto;
+import org.example.donatehub.DTO.UserDto;
 import org.example.donatehub.entity.OrganizationProfile;
 import org.example.donatehub.entity.User;
 import org.example.donatehub.enums.Role;
@@ -27,7 +27,7 @@ public class UserService {
 
     //create user
     @Transactional //if something goes wrong in orgprofile user also will not be saves all or nothing
-    public User createUser(userDto user,
+    public User createUser(UserDto user,
                            String orgName ,
                            String orgType,
                            String regNumber) {

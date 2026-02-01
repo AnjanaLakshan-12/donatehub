@@ -1,7 +1,7 @@
 package org.example.donatehub.enums;
 
 public enum DonationStatus {
-    AVAiLIABLE,
+    AVAILABLE,
     RESERVED,
     DONATED
 }

@@ -1,6 +1,6 @@
 package org.example.donatehub.controller;
 
-import org.example.donatehub.DTO.userDto;
+import org.example.donatehub.DTO.UserDto;
 import org.example.donatehub.entity.User;
 import org.example.donatehub.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class UserController {
 
     //create a new account
     @PostMapping("/add")
-    public ResponseEntity<?> registerUser(@RequestBody userDto user ,
+    public ResponseEntity<?> registerUser(@RequestBody UserDto user ,
                                           @RequestParam(required = false) String orgName ,
                                           @RequestParam(required = false) String orgType,
                                           @RequestParam(required = false) String regNumber) {

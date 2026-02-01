@@ -4,7 +4,7 @@ import lombok.Data;
 import org.example.donatehub.enums.Role;
 
 @Data
-public class userDto {
+public class UserDto {
     private String firstName;
     private String lastName;
     private String email;
