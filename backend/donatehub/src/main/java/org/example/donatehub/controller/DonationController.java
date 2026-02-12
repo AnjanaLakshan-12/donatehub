@@ -52,17 +52,7 @@ public class DonationController {
 
     }
 
-//    //get all donations
-//    @GetMapping("/getall")
-//    public ResponseEntity<?> getAllDonations() {
-//        List<Donation> donations = donationService.getAllDonations();
-//        if (donations.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("no donations were found");
-//        } else {
-//            return ResponseEntity.status(HttpStatus.OK).body(donations);
-//        }
-//    }
-//
+
     //get all donations with pagination
     @GetMapping("/getall/paginated")
     public ResponseEntity<?> getAllDonationsPaginated(
@@ -89,23 +79,6 @@ public class DonationController {
 
 
 
-
-
-
-
-    
-
-//    //get all available donations
-//    @GetMapping("/getall/available")
-//    public ResponseEntity<?> getAllAvailableDonations() {
-//        List<Donation> donations = donationService.getAllAvailableDonations();
-//
-//        if (donations.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("no donations were found");
-//        } else {
-//            return ResponseEntity.status(HttpStatus.OK).body(donations);
-//        }
-//    }
     
     //get all available donations with pagination
     @GetMapping("/getall/available/paginated")
@@ -125,16 +98,7 @@ public class DonationController {
         return donationService.deletebyid(id);
     }
 
-//    //get all by category
-//    @GetMapping("/category/{category}")
-//    public ResponseEntity<?> getAllByCategory(@PathVariable String category) {
-//        List<Donation> donations = donationService.getAllByCategory(category);
-//        if (donations.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("no donations were found");
-//        } else {
-//            return ResponseEntity.status(HttpStatus.OK).body(donations);
-//        }
-//    }
+
     
     //get all by category with pagination
     @GetMapping("/category/{category}/paginated")
@@ -149,16 +113,7 @@ public class DonationController {
         return ResponseEntity.status(HttpStatus.OK).body(donations);
     }
 
-//    //get all by user
-//    @GetMapping("/username/{username}")
-//    public ResponseEntity<?> getDonationByUser(@PathVariable String username) {
-//        List<Donation> donations = donationService.getDonationByUser(username);
-//        if (donations.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("no donations were found");
-//        } else {
-//            return ResponseEntity.status(HttpStatus.OK).body(donations);
-//        }
-//    }
+
     
     //get all by user with pagination
     @GetMapping("/username/{username}/paginated")
