@@ -18,12 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1")
 public class CategoryController {
-
      @Autowired
     private CategoryService categoryService;
 
 
-    //get all /api/categories
+    //get all 
     @GetMapping("/categories")
     public ResponseEntity<List<Category>> getCategories() {
         List <Category> categories = categoryService.getCategories();
@@ -34,7 +33,7 @@ public class CategoryController {
     }
 
 
-    //add new category   /api/categories
+    //add new category 
     @PostMapping("/add/categories")
     public  ResponseEntity<?> addCategory(@RequestBody Category category) {
         return categoryService.addCategory(category);
