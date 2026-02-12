@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CategoryService {
-    
+
     @Autowired
     private CategoryRepository categoryRepository;
 
@@ -19,7 +19,7 @@ public class CategoryService {
     public ResponseEntity<?> addCategory(Category category){
         List<Category> allcategory = categoryRepository.findAll();
         boolean exists = allcategory.stream()
-                .anyMatch(c -> c.getName().equalsIgnoreCase(category.getName()));  //filter findfirst ismatch = anymatch
+                .anyMatch(c -> c.getName().equalsIgnoreCase(category.getName())); 
 
         if (exists){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Category already exists");
