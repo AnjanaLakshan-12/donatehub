@@ -8,6 +8,8 @@ import org.example.donatehub.enums.Role;
 import org.example.donatehub.repo.OrganizationProfileRepository;
 import org.example.donatehub.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -76,6 +78,11 @@ public class UserService {
     //get all
     public List<User> getAllUsers(){
         return userRepository.findAll();
+    }
+
+    //get all with pagination
+    public Page<User> getAllUsersPaginated(Pageable pageable) {
+        return userRepository.findAll(pageable);
     }
 
     //update

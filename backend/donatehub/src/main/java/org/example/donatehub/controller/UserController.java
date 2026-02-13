@@ -4,6 +4,9 @@ import org.example.donatehub.DTO.UserDto;
 import org.example.donatehub.entity.User;
 import org.example.donatehub.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +47,20 @@ public class UserController {
     public ResponseEntity<?> getAllUsers() {
         try{
             return ResponseEntity.ok(userService.getAllUsers());
+        }catch (RuntimeException e){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(e.getMessage());
+        }
+    }
+
+    //get all with pagination
+    @GetMapping("/getall/paginated")
+    public ResponseEntity<?> getAllUsersPaginated(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        try{
+            Pageable pageable = PageRequest.of(page, size);
+            Page<User> users = userService.getAllUsersPaginated(pageable);
+            return ResponseEntity.ok(users);
         }catch (RuntimeException e){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(e.getMessage());
         }
