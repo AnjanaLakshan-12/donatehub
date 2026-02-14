@@ -1,7 +1,9 @@
 package org.example.donatehub.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import jakarta.transaction.Transactional;
 import org.example.donatehub.entity.Category;
 import org.example.donatehub.entity.Donation;
 import org.example.donatehub.repo.CategoryRepository;
