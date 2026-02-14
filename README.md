@@ -38,36 +38,52 @@ npm run lint     # Check code quality
 **Port already in use?** Vite will use the next available port automatically.
 
 
+⚙️ DonateHub Backend – Setup & Run Guide
+📌 Prerequisites
 
-#Here is the backend guide written in the exact same simple, clean style as your frontend documentation.
+Java (v17+)
 
-DonateHub Backend - Setup & Run Guide
-Prerequisites
-Java (v17+) - Download
+Maven (v3.6+)
 
-Maven (v3.6+) - Download
+MySQL (v8.0+)
 
-MySQL (v8.0+) - [suspicious link removed]
+🚀 Setup Steps
+1️⃣ Database Setup
 
-Setup Steps
-1. Database Setup
 Open MySQL and create the database:
 
-SQL
 CREATE DATABASE donatehub;
-2. Configure Credentials
-Update src/main/resources/application.properties with your MySQL username and password:
+2️⃣ Configure Credentials
 
-Properties
+Update the following file:
+
+src/main/resources/application.properties
+
+Add your MySQL credentials:
+
 spring.datasource.username=root
 spring.datasource.password=your_password
-3. Run the Server
-Bash
+3️⃣ Run the Server
 mvn spring-boot:run
-The API will be available at http://localhost:8080
 
-Available Commands
-Bash
-mvn clean install   # Build project and download dependencies
-mvn spring-boot:run # Start the backend server
-mvn test            # Run backend unit tests
+The API will be available at:
+
+http://localhost:8080
+📦 Available Backend Commands
+mvn clean install    # Build project and download dependencies
+mvn spring-boot:run  # Start backend server
+mvn test             # Run backend unit tests
+📚 Project Structure (Basic Overview)
+donatehub/
+│
+├── controller/
+├── service/
+├── repository/
+├── model/
+├── config/
+└── resources/
+👨‍💻 Author
+
+Anjana
+Software Engineering Student
+NSBM Green University
