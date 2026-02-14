@@ -62,7 +62,7 @@ const DonationRequestManagement = () => {
         try {
             await handleRequestStatus(requestId, status);
             alert(`Request ${status.toLowerCase()} successfully!`);
-            await fetchRequests(); // Refresh the list
+            await fetchRequests();
         } catch (error) {
             console.error(`Error ${status.toLowerCase()} request:`, error);
             alert(`Failed to ${status.toLowerCase()} request: ${error.response?.data || error.message}`);
@@ -73,12 +73,12 @@ const DonationRequestManagement = () => {
 
     const handleFilterChange = (newFilter) => {
         setFilter(newFilter);
-        setCurrentPage(0); // Reset to first page when filter changes
+        setCurrentPage(0);
     };
 
     const handlePageSizeChange = (newSize) => {
         setPageSize(newSize);
-        setCurrentPage(0); // Reset to first page when page size changes
+        setCurrentPage(0);
     };
 
     const handlePreviousPage = () => {

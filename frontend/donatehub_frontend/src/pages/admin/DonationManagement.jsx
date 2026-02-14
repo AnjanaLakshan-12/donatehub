@@ -23,17 +23,14 @@ const DonationManagement = () => {
         setLoading(true);
         setError(null);
         try {
-            // Always fetch with pagination, filter will be applied on current page data
             const endpoint = `?page=${currentPage}&size=${pageSize}&sortBy=${sortBy}&direction=${sortDirection}`;
             console.log('Fetching donations from endpoint:', endpoint);
             const response = await getAllDonations(endpoint);
             
             console.log('API Response:', response);
             
-            // Get the content array from paginated response
             let data = response.data.content || response.data || [];
             
-            // Apply client-side filter only to current page data
             if (filter !== 'ALL') {
                 data = data.filter(donation => donation.status === filter);
             }
@@ -79,7 +76,6 @@ const DonationManagement = () => {
     };
 
     const handleDelete = async (donationId, title) => {
-        // Extract clean numeric ID
         const cleanId = String(donationId).replace(/[^0-9]/g, '');
         console.log('Original donation ID:', donationId, 'Clean ID:', cleanId);
         
@@ -92,7 +88,7 @@ const DonationManagement = () => {
             const response = await deleteDonation(cleanId);
             console.log('Delete response:', response);
             alert('Donation deleted successfully!');
-            await fetchDonations(); // Refresh the list
+            await fetchDonations();
         } catch (error) {
             console.error('Error deleting donation:', error);
             console.error('Error response:', error.response);

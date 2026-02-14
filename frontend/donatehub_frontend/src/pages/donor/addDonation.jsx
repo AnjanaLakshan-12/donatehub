@@ -50,7 +50,6 @@ export default function AddDonation({ user }) {
           let width = img.width;
           let height = img.height;
           
-          // Calculate new dimensions (max 1200px)
           const maxDim = 1200;
           if (width > height && width > maxDim) {
             height = (height * maxDim) / width;
@@ -65,7 +64,6 @@ export default function AddDonation({ user }) {
           const ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, width, height);
           
-          // Start with quality 0.8 and reduce if needed
           let quality = 0.8;
           const tryCompress = () => {
             canvas.toBlob((blob) => {
@@ -139,16 +137,14 @@ export default function AddDonation({ user }) {
         return;
       }
 
-      // Compress image if it's an image file
       let finalFile = file;
       if (file.type.startsWith('image/')) {
         setError("Compressing image...");
         finalFile = await compressImage(file, 150);
-        setError(""); // Clear compression message
+        setError("");
       }
 
-      // Check final file size
-      const maxFileSize = 150 * 1024; // 150KB
+      const maxFileSize = 150 * 1024;
       if (finalFile.size > maxFileSize) {
         setError(`File size must be less than 150KB. Current: ${Math.round(finalFile.size / 1024)}KB`);
         setLoading(false);
