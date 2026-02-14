@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ public class OrganizationProfileController {
 
     //Fetch the org profile linked to a specific user. /api/profiles/org/{userId}
     @GetMapping("/user/organization/{id}")
-    public ResponseEntity<?> orgUserDetails(Long id) {
+    public ResponseEntity<?> orgUserDetails(@PathVariable Long id) {
         try{
             return organizationProfileService.orgUserDetails(id);
         }catch(Exception e){
