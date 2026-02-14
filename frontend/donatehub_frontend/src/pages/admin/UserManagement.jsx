@@ -83,7 +83,6 @@ export default function UserManagement() {
     };
 
     const handleDeleteUser = async (userId) => {
-        // Extract clean numeric ID
         const cleanId = String(userId).split(':')[0].trim();
         console.log('Original ID:', userId, 'Clean ID:', cleanId);
         

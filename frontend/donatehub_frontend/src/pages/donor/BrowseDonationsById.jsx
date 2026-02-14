@@ -32,7 +32,6 @@ export default function BrowseDonationsById({ user }) {
   const loadMyDonations = async () => {
     try {
       setLoading(true);
-      // Backend accepts email as username, not user ID
       const email = storedUser.email || storedUser.username || storedUser.userName;
       if (!email) {
         setError("User email not found. Please log in again.");
