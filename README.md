@@ -90,8 +90,3 @@ donatehub/
 ├── model/
 ├── config/
 └── resources/
-👨‍💻 Author
-
-Anjana
-Software Engineering Student
-NSBM Green University
