@@ -1,6 +1,7 @@
 package org.example.donatehub.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,5 +23,11 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
+    @JsonIgnore
     private List<Donation> donations;
+
+    //constructor to create a category when needed
+    public Category(String name) {
+        this.name = name;
+    }
 }

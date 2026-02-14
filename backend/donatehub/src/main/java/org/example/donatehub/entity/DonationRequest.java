@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.donatehub.enums.RequestStatus;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -28,7 +31,13 @@ public class DonationRequest { //organization makeing request to the donation li
     @Column(nullable = false)
     private String purpose;
 
+    @Column(nullable = false)
+    private int requestedQuantity;
+
     @Enumerated(EnumType.STRING)
     private RequestStatus status;
 
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime requestDate;
 }

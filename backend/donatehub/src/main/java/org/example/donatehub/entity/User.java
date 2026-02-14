@@ -1,5 +1,6 @@
 package org.example.donatehub.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,19 +29,25 @@ public class User {
     private String email;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role = Role.DONOR;
 
     @Column(nullable = false)
     private String district;
 
     @OneToMany(mappedBy = "donor")
+    @JsonIgnore
     private List<Donation> donations;
 
     @OneToMany(mappedBy = "organization")
+    @JsonIgnore
     private List<DonationRequest>  donationRequests;
+
+    @Column(nullable = false)
+    private Boolean enable;
 
 
 }
