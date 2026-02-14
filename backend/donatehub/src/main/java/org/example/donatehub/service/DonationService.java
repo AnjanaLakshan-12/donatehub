@@ -139,4 +139,20 @@ public class DonationService {
     public Donation getDonationById(Long id) {
        return  donationRepository.findById(id).orElseThrow(()-> new RuntimeException("donation not found"));
     }
+
+    //search option
+
+    public List<Donation> searchDonations(String keyword) {
+
+        List<Donation> allDonations = donationRepository.findAll();
+
+        return allDonations.stream()
+                .filter(donation ->
+                        donation.getTitle() != null &&
+                                donation.getTitle().toLowerCase().contains(keyword.toLowerCase())
+                )
+                .toList();
+    }
+
+
 }
