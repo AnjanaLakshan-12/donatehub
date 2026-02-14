@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.example.donatehub.entity.Donation;
+import org.example.donatehub.entity.DonationRequest;
 import org.example.donatehub.entity.User;
 import org.example.donatehub.enums.DonationStatus;
 import org.example.donatehub.repo.DonationRepository;
@@ -81,11 +82,35 @@ public class DonationService {
         return convertListToPage(availableDonatios, pageable);
     }
 
-    //delete by id
-    public ResponseEntity<?> deletebyid(Long id){
-        donationRepository.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).body("donation deleted successfully");
+  //delete by id
+    @Transactional
+    public ResponseEntity<?> deletebyid(Long id) {
+        try {
+            Optional<Donation> donationOpt = donationRepository.findById(id);
+
+            if (!donationOpt.isPresent()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("Donation not found");
+            }
+
+            // delete all related donation requests
+            List<DonationRequest> requests = donationRequestRepository.findByDonationId(id);
+            if (requests != null && !requests.isEmpty()) {
+                donationRequestRepository.deleteAll(requests);
+            }
+
+            //delete the donation
+            donationRepository.deleteById(id);
+
+            return ResponseEntity.ok("Donation has been deleted successfully!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to delete donation: " + e.getMessage());
+        }
     }
+
 
     //get all by category
     public List<Donation> getAllByCategory(String category) {
