@@ -1,5 +1,6 @@
 package org.example.donatehub.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.example.donatehub.entity.OrganizationProfile;
@@ -53,26 +54,30 @@ public class AdminService {
         }
     }
 
-
-
     //delete user
     @Transactional
     public ResponseEntity<?> deleteUser(Long id) {
-        Optional<User> user = userRepository.findById(id);
+        Optional<User> userOpt = userRepository.findById(id);
 
-        if (user.isPresent()) {
-
-            //delete the org profile
-           OrganizationProfile org = organizationProfileRepository.findByUserId(id).get(0);
-           if(org!=null){
-               organizationProfileRepository.delete(org);
-           }
-           //delete the user
-            userRepository.delete(user.get());
-            return ResponseEntity.status(HttpStatus.CREATED).body("User has been deleted successfully!");
-        }else{
+        if (!userOpt.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }
+
+        User user = userOpt.get();
+
+        // Delete organization profile
+        try {
+            List<OrganizationProfile> orgs = organizationProfileRepository.findByUserId(id);
+            if (orgs != null && !orgs.isEmpty()) {
+                organizationProfileRepository.deleteAll(orgs);
+            }
+        } catch (Exception e) {
+            System.err.println("Error deleting org profile: " + e.getMessage());
+        }
+
+        // Delete the user
+        userRepository.delete(user);
+        return ResponseEntity.ok("User has been deleted successfully!");
     }
 
 
