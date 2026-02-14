@@ -38,8 +38,8 @@ public class SecurityConfig {
                         .securityContextRepository(new HttpSessionSecurityContextRepository()) // Persist auth to session
                 )
                 .authorizeHttpRequests(auth -> auth
-                        // 1. Allow everyone to try to login or register
-                        .requestMatchers("/api/auth/login", "/api/auth/register", "/api/v1/users/add").permitAll()
+                        // 1. Allow everyone to try to login or register or contact us
+                        .requestMatchers("/api/auth/login", "/api/auth/register", "/api/v1/users/add", "/api/contact/submit").permitAll()
                         
                         // 2. Donation Request endpoints - organization access
                         .requestMatchers("/api/v1/donationrequest/user/**").hasRole("ORG")
