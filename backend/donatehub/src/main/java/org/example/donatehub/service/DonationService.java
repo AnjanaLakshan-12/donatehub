@@ -2,12 +2,15 @@ package org.example.donatehub.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
+import jakarta.transaction.Transactional;
 import org.example.donatehub.entity.Donation;
 import org.example.donatehub.entity.DonationRequest;
 import org.example.donatehub.entity.User;
 import org.example.donatehub.enums.DonationStatus;
 import org.example.donatehub.repo.DonationRepository;
+import org.example.donatehub.repo.DonationRequestRepository;
 import org.example.donatehub.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +25,9 @@ public class DonationService {
 
     @Autowired
     private DonationRepository donationRepository;
+
+    @Autowired
+    private DonationRequestRepository donationRequestRepository;
     
     @Autowired
     private UserRepository userRepository;
