@@ -161,4 +161,10 @@ public class DonationController {
                 .body(imageFile);
     }
 
+    //search option
+    @GetMapping("/search")
+    public List<Donation> search(@RequestParam String keyword) {
+        return donationService.searchDonations(keyword);
+    }
+
 }
