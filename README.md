@@ -1,92 +1,113 @@
-# donatehub
-DonateHub is a full-stack web application developed using Spring Boot to connects donors with verified organizations through public requests and transparent donation tracking.
+# 🏨 Hotel ERP System
 
+Hotel ERP System is a full-stack **Enterprise Resource Planning (ERP)** prototype developed for hotel operations management.  
+It integrates key hotel business processes such as **customer management, room management, reservations, service charges, billing, invoice generation, maintenance requests, and role-based access control**.
 
-
-# DonateHub Frontend - Setup & Run Guide
-
-## Prerequisites
-
-- **Node.js** (v16+) - [Download](https://nodejs.org/)
-- **npm** (v7+) - comes with Node.js
-
-## Setup Steps
-
-### 1. Install Dependencies
-```bash
-npm install
-```
-
-### 2. Run the Development Server
-```bash
-npm run dev
-```
-
-The app will open at `http://localhost:5173`
-
-## Available Commands
-
-```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run preview  # Preview production build
-npm run lint     # Check code quality
-```
-
-## Troubleshooting
-
-**Port already in use?** Vite will use the next available port automatically.
-
-
-# ⚙️ DonateHub Backend – Setup & Run Guide
-
-## 📌 Prerequisites
-
-- Java (v17+)
-- Maven (v3.6+)
-- MySQL (v8.0+)
+This project was developed for the **Business Process and ERP Systems** group assignment.
 
 ---
 
-## 🚀 Setup Steps
+## 📌 Project Overview
 
-### 1️⃣ Database Setup
+The Hotel ERP System supports daily hotel operations by connecting different business modules into one centralized platform.
 
-Open MySQL and create the database:
+The system helps hotel staff manage:
 
-```sql
-CREATE DATABASE donatehub;
+- Customers
+- Rooms
+- Reservations
+- Guest service charges
+- Invoices and payments
+- Maintenance requests
+- User roles and access permissions
 
-# ⚙️ DonateHub Backend – Setup & Run Guide
+The main goal of this project is to demonstrate **business process integration**, **ERP module design**, **database functionality**, and **cloud deployment using Microsoft Azure**.
 
-## 2️⃣ Configure Credentials
+---
 
-Update the following file:
+## 🧩 Main ERP Modules
 
-src/main/resources/application.properties
+### 👤 1. Customer Management
 
-Add your MySQL credentials:
+- Add new customers
+- View customer records
+- Update customer details
+- Search customers
+- Delete customer records
 
-spring.datasource.username=root
-spring.datasource.password=your_password
+---
 
-3️⃣ Run the Server
-mvn spring-boot:run
+### 🛏️ 2. Room Management
 
+- View room inventory
+- View room availability status
+- Submit room maintenance reports
+- Filter rooms by status, type, and floor
 
-The API will be available at:
+---
 
-http://localhost:8080
-📦 Available Backend Commands
-mvn clean install    # Build project and download dependencies
-mvn spring-boot:run  # Start backend server
-mvn test             # Run backend unit tests
-📚 Project Structure (Basic Overview)
-donatehub/
-│
-├── controller/
-├── service/
-├── repository/
-├── model/
-├── config/
-└── resources/
+### 📅 3. Reservation Management
+
+- Create room reservations
+- Manage guest check-in and check-out
+- Handle early checkout
+- Submit cancellation requests to manager
+- Track reservation status
+
+---
+
+### 🍽️ 4. Service Charge Management
+
+- Add service charges for checked-in guests
+- Support charges such as food, drinks, laundry, and room service
+- Calculate service charge totals
+- Link service charges to final invoice
+
+---
+
+### 🧾 5. Invoice Management
+
+- Preview interim guest folio
+- Generate final invoice after checkout
+- Apply advance payment deductions
+- Mark invoices as paid
+- Select payment method:
+  - Cash
+  - Card
+  - Online Transfer
+- Download invoice PDF
+
+---
+
+### 🧑‍💼 6. Manager Panel
+
+- View today’s arrivals
+- View today’s departures
+- View currently in-house guests
+- View pending payments
+- Approve or reject maintenance requests
+- Review reservation cancellation requests
+- Decide refund type for cancellations
+
+---
+
+### 🛠️ 7. Admin Dashboard
+
+- Add app users
+- Update user details and roles
+- Activate or deactivate users
+- Manage room administration
+- View recent users
+- View role and access overview
+
+---
+
+## 🔐 User Roles
+
+The system includes role-based access control using the following roles:
+
+```text
+ADMIN
+MANAGER
+RECEPTIONIST
+SERVICE_STAFF
